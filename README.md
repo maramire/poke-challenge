@@ -25,11 +25,23 @@ $ pip install -r requirements.txt
       ```bash
       $ python3 count_special_pokemon.py
       ```
+      Output:
+      ```bash
+      14
+      ```
    2. Second Question
       ```bash
       $ python3 count_compatible_pokemon.py raichu
       ```
+      Output:
+      ```bash
+      257
+      ```
    3. Third Question
       ```bash
       $ python3 max_min_weight.py
+      ```
+      Output:
+      ```bash
+      [1300, 195]
       ```
