@@ -16,7 +16,7 @@ async def max_min_weight():
     # filter fighting first gen pokemon
     pokemon_urls = [url for url in first_gen if url in fighting_pokemon]
 
-    # collect pokemon weights asynchronously from pokemon urls
+    # collect pokemon data asynchronously from pokemon urls
     pokemons = await async_http.get(pokemon_urls)
     # filter only weights
     weights = [p.get('weight') for p in pokemons]
