@@ -9,11 +9,14 @@ def count_compatible_species(specie_name):
     """
 
     specie = http.get(BASE_URL + f'pokemon-species/{specie_name}')
-    egg_groups = specie.get('egg_groups')
+    egg_groups = [group.get('url') for group in specie.get('egg_groups')]
 
     compatible_species = set()
-    for egg_group_url in map(lambda e: e.get('url'), egg_groups):
-        egg_group_species = http.get(egg_group_url).get('pokemon_species')
+    for url in egg_groups:
+        # request egg group species
+        egg_group_detail = http.get(url)
+        egg_group_species = egg_group_detail.get('pokemon_species')
+        # update set of compatible species discarding 'specie_name' param
         compatible_species.update(
             [pokemon.get('name') for pokemon in egg_group_species if pokemon.get('name') != specie_name])
     return len(compatible_species)

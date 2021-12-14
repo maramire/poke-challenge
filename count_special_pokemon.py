@@ -8,8 +8,8 @@ def count_special_pokemon():
     """
 
     # make the first request to find total number of pokemon
-    r = http.get(BASE_URL)
-    pokemon_count = r.get('count')
+    pokemon_count = http.get(BASE_URL).get('count')
+
     # fetch all pokemon
     all_pokemon = http.get(BASE_URL + f'?limit={pokemon_count}').get('results')
 
